@@ -1,0 +1,23 @@
+= form_for(component) do |f|
+  - if component.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(component.errors.count, "error")
+        prohibited this component from being saved:
+      %ul
+        - component.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :install_date
+    = f.date_select :install_date
+  .field
+    = f.label :initial_value
+    = f.number_field :initial_value
+  .field
+    = f.label :comp_array_id
+    = collection_select(:component, :comp_array_id, CompArray.all, :id, :description)
+  .actions
+    = f.submit

@@ -1,0 +1,1 @@
+json.partial! "comp_arrays/comp_array", comp_array: @comp_array

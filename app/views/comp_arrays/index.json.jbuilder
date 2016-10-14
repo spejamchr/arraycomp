@@ -1,0 +1,1 @@
+json.array! @comp_arrays, partial: 'comp_arrays/comp_array', as: :comp_array

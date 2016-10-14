@@ -1,0 +1,24 @@
+%p#notice= notice
+%h1 Components
+%table.table.table-striped
+  %thead
+    %tr
+      %th Description
+      %th Install date
+      %th Initial value
+      %th Array
+      %th Current Value
+      %th{:colspan => "3"}
+  %tbody
+    - @components.each do |component|
+      %tr
+        %td= component.description
+        %td= component.install_date
+        %td= number_to_currency(component.initial_value)
+        %td= component.comp_array.description
+        %td= number_to_currency(component.current_value.round(2))
+        %td= link_to 'Show', component
+        %td= link_to 'Edit', edit_component_path(component)
+        %td= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Component', new_component_path

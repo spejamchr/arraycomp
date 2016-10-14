@@ -1,0 +1,26 @@
+= form_for(comp_array) do |f|
+  - if comp_array.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(comp_array.errors.count, "error")
+        prohibited this comp_array from being saved:
+      %ul
+        - comp_array.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :install_date
+    = f.date_select :install_date
+  .field
+    = f.label :initial_value
+    = f.number_field :initial_value
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :customer_id
+    = collection_select(:comp_array, :customer_id, Customer.all, :id, :name)
+  .actions
+    = f.submit

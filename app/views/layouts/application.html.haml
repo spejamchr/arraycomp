@@ -1,0 +1,31 @@
+!!!
+%html{:lang => "en"}
+  %head
+    / Required meta tags always come first
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
+    %meta{:content => "ie=edge", "http-equiv" => "x-ua-compatible"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+
+    %title Arraycomp
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+    / Bootstrap CSS
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css", :integrity => "2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj", :rel => "stylesheet"}/
+  %body
+    %nav.navbar.navbar-light.bg-faded
+      %button.navbar-toggler.hidden-sm-up{"aria-controls" => "array_comp_navbar", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#array_comp_navbar", "data-toggle" => "collapse", :type => "button"}
+        \☰
+      #array_comp_navbar.collapse.navbar-toggleable-xs
+        = link_to 'ArrayComp', root_path, class: 'navbar-brand'
+        %ul.nav.navbar-nav
+          %li.nav-item{class: controller_name == 'comp_arrays' ? 'active' : ''}
+            = link_to 'Arrays', comp_arrays_path, class: 'nav-link'
+          %li.nav-item{class: controller_name == 'components' ? 'active' : ''}
+            = link_to 'Components', components_path, class: 'nav-link'
+          %li.nav-item{class: controller_name == 'customers' ? 'active' : ''}
+            = link_to 'Customers', customers_path, class: 'nav-link'
+
+    .body_center= yield

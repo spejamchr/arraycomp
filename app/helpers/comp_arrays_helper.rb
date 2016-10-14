@@ -1,0 +1,2 @@
+module CompArraysHelper
+end
