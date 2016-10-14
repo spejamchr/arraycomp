@@ -3,7 +3,7 @@ class CompArray < ApplicationRecord
   has_many :components
   belongs_to :customer
 
-  DEFAULT_PERIOD = { days: 1 }.freeze
+  DEFAULT_PERIOD = { months: 1 }.freeze
 
   def value_of_components_at_date(date)
     components.inject(0) { |a, e| a + e.value_at_date(date) }
