@@ -23,4 +23,4 @@
     = f.label :customer_id
     = collection_select(:comp_array, :customer_id, Customer.all, :id, :name)
   .actions
-    = f.submit
+    = f.submit 'Submit Array'

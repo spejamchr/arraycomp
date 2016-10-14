@@ -3,11 +3,11 @@
 one:
   description: MyString
   install_date: 2016-10-13
-  initial_value: 1
-  comp_array_id: 1
+  initial_value: 300
+  comp_array: one
 
 two:
   description: MyString
   install_date: 2016-10-13
-  initial_value: 1
-  comp_array_id: 1
+  initial_value: 1000
+  comp_array: two

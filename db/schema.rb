@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20161013173909) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comp_arrays", force: :cascade do |t|
     t.string   "description"
     t.date     "install_date"

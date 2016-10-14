@@ -17,7 +17,14 @@ class ComponentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create component" do
     assert_difference('Component.count') do
-      post components_url, params: { component: { comp_array_id: @component.comp_array_id, description: @component.description, initial_value: @component.initial_value, install_date: @component.install_date } }
+      post components_url, params: {
+        component: {
+          comp_array_id: @component.comp_array_id,
+          description: @component.description,
+          initial_value: @component.initial_value,
+          install_date: @component.install_date
+        }
+      }
     end
 
     assert_redirected_to component_url(Component.last)
@@ -34,7 +41,14 @@ class ComponentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update component" do
-    patch component_url(@component), params: { component: { comp_array_id: @component.comp_array_id, description: @component.description, initial_value: @component.initial_value, install_date: @component.install_date } }
+    patch component_url(@component), params: {
+      component: {
+        comp_array_id: @component.comp_array_id,
+        description: @component.description,
+        initial_value: @component.initial_value,
+        install_date: @component.install_date
+      }
+    }
     assert_redirected_to component_url(@component)
   end
 

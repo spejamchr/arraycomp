@@ -29,7 +29,7 @@ class CompArray < ApplicationRecord
     dates(period).each_with_object({}) { |d, h| h[d] = total_value_at_date(d) }
   end
 
-  def stuff(period = DEFAULT_PERIOD.dup)
+  def graph_info(period = DEFAULT_PERIOD.dup)
     { name: description, data: data(period) }
   end
 end

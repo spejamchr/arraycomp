@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :charts, only: [] do
     collection do
-      get 'comp_arrays'
+      get 'all_comp_arrays'
     end
   end
 end

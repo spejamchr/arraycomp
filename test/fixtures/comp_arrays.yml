@@ -2,14 +2,14 @@
 
 one:
   description: MyString
-  install_date: 2016-10-13
-  initial_value: 1
+  install_date: 2015-10-13
+  initial_value: 1000
   location: MyString
-  customer_id: 1
+  customer: one
 
 two:
   description: MyString
-  install_date: 2016-10-13
-  initial_value: 1
+  install_date: 2014-10-13
+  initial_value: 200
   location: MyString
-  customer_id: 1
+  customer: two
