@@ -21,7 +21,7 @@
       %button.navbar-toggler.hidden-sm-up{"aria-controls" => "array_comp_navbar", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#array_comp_navbar", "data-toggle" => "collapse", :type => "button"}
         \☰
       #array_comp_navbar.collapse.navbar-toggleable-xs
-        = link_to 'ArrayComp', root_path, class: 'navbar-brand'
+        = link_to 'ArrayComp', root_path, class: "navbar-brand #{controller_name == 'home' ? '' : 'text-muted'}"
         %ul.nav.navbar-nav
           %li.nav-item{class: controller_name == 'comp_arrays' ? 'active' : ''}
             = link_to 'Arrays', comp_arrays_path, class: 'nav-link'

@@ -6,8 +6,10 @@ module ChartsHelper
                  interpolateNulls: true,
                  pointSize: 0,
                  curveType: 'none',
-                 title: 'All Arrays',
-                 legend: 'bottom'
+                 legend: {
+                   position: 'top',
+                   maxLines: 3
+                 }
                }
   end
 end
