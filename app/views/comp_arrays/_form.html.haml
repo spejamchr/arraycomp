@@ -8,6 +8,9 @@
         - comp_array.errors.full_messages.each do |message|
           %li= message
   .field
+    = f.label :serial_number
+    = f.text_field :serial_number
+  .field
     = f.label :description
     = f.text_field :description
   .field

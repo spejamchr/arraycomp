@@ -3,6 +3,7 @@
 %table.table.table-striped
   %thead
     %tr
+      %th Serial Number
       %th Description
       %th Install date
       %th Initial value
@@ -15,6 +16,7 @@
   %tbody
     - @comp_arrays.each do |comp_array|
       %tr
+        %td= comp_array.serial_number
         %td= comp_array.description
         %td= comp_array.install_date
         %td= number_to_currency(comp_array.initial_value)

@@ -17,6 +17,7 @@ development:
   database: db/arraycomp_development
   username: spencer
   password: testing
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -26,6 +27,7 @@ test:
   database: db/arraycomp_test
   username: spencer
   password: testing
+  host: localhost
 
 production:
   <<: *default
