@@ -52,5 +52,3 @@ gem 'bootstrap', '~> 4.0.0.alpha4'
 gem 'haml'
 gem 'haml-rails'
 gem 'chartkick'
-
-ruby '2.3.1'
