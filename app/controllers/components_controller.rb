@@ -14,7 +14,7 @@ class ComponentsController < ApplicationController
 
   # GET /components/new
   def new
-    @component = Component.new
+    @component = Component.new(component_params)
   end
 
   # GET /components/1/edit
@@ -69,6 +69,6 @@ class ComponentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def component_params
-      params.require(:component).permit(:description, :install_date, :initial_value, :comp_array_id)
+      params.fetch(:component, {}).permit(:description, :install_date, :initial_value, :comp_array_id)
     end
 end

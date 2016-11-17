@@ -14,7 +14,7 @@ class CompArraysController < ApplicationController
 
   # GET /comp_arrays/new
   def new
-    @comp_array = CompArray.new
+    @comp_array = CompArray.new(comp_array_params)
   end
 
   # GET /comp_arrays/1/edit
@@ -69,6 +69,6 @@ class CompArraysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comp_array_params
-      params.require(:comp_array).permit(:description, :install_date, :initial_value, :location, :customer_id, :serial_number)
+      params.fetch(:comp_array, {}).permit(:description, :install_date, :initial_value, :location, :customer_id, :serial_number)
     end
 end

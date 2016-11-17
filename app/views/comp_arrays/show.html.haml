@@ -1,22 +1,12 @@
 %p#notice= notice
-%p
-  %strong Serial Number:
-  = @comp_array.serial_number
-%p
-  %strong Description:
-  = @comp_array.description
-%p
-  %strong Install date:
-  = @comp_array.install_date
-%p
-  %strong Initial value:
-  = @comp_array.initial_value
-%p
-  %strong Location:
-  = @comp_array.location
-%p
-  %strong Customer:
-  = @comp_array.customer.name
-= link_to 'Edit', edit_comp_array_path(@comp_array)
-|
-= link_to 'Back', comp_arrays_path
+
+%h1 Array #{@comp_array.serial_number}
+
+= render 'comp_arrays', comp_arrays: [@comp_array], options: false
+
+%h3 Components
+
+= render '/components/components', components: @comp_array.components
+
+%br/
+= link_to 'New Component', new_component_path(component: { comp_array_id: @comp_array })

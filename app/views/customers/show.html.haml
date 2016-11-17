@@ -1,7 +1,14 @@
 %p#notice= notice
+%h1 Customer
+
 %p
   %strong Name:
   = @customer.name
 = link_to 'Edit', edit_customer_path(@customer)
 |
 = link_to 'Back', customers_path
+
+= render 'comp_arrays/comp_arrays', comp_arrays: @customer.comp_arrays, options: true
+
+%br/
+= link_to 'New Array', new_comp_array_path(comp_array: { customer_id: @customer })
