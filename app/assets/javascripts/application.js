@@ -12,9 +12,9 @@
 //
 //= require chartkick
 //= require jquery
+//= require jquery.turbolinks
 //= require bootstrap
 //= require jquery_ujs
 //= require turbolinks
-//= require jquery.turbolinks
 //= require jquery-tablesorter
 //= require_tree .
