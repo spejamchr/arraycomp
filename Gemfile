@@ -52,3 +52,7 @@ gem 'bootstrap', '~> 4.0.0.alpha4'
 gem 'haml'
 gem 'haml-rails'
 gem 'chartkick'
+# Add Tablesorter
+gem 'jquery-tablesorter'
+# Avoid issues with turbolinks and jquery
+gem 'jquery-turbolinks'
