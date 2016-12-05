@@ -5,6 +5,7 @@ class Component < ApplicationRecord
   include ActionView::Helpers::DateHelper # Use time_ago_in_words
 
   belongs_to :comp_array
+  has_one :customer, through: :comp_array
 
   alias_method :total_value_at_date, :value_at_date
   alias_attribute :start_date, :install_date

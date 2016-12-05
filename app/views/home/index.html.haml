@@ -1,2 +1,20 @@
 
 = all_comp_arrays
+
+%h3 Components Needing Renewal
+
+= render 'components/table',
+components: Component.all.select(&:near_depreciation),
+show: true
+
+%h3 Arrays Needing Renewal
+
+= render 'comp_arrays/table',
+comp_arrays: CompArray.all.select(&:near_depreciation),
+show: true
+
+%h3 Customers Affected
+
+= render 'customers/table',
+customers: Customer.all.select(&:flagged?),
+show: true

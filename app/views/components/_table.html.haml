@@ -3,6 +3,7 @@
     %tr
       %th Description
       %th Array
+      %th Customer
       %th Install date
       %th Initial value
       %th Current Value
@@ -11,7 +12,8 @@
     - components.each do |component|
       %tr
         %td= component.description
-        %td= link_to component.comp_array.description, component.comp_array
+        %td= link_to component.comp_array.serial_number, component.comp_array
+        %td= link_to component.customer.name, component.customer
         %td= component.install_date
         %td= number_to_currency(component.initial_value)
         %td= number_to_currency(component.current_value.round(2))
