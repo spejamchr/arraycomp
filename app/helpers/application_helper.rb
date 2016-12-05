@@ -15,12 +15,21 @@ module ApplicationHelper
   end
 
   def renewal_flag(depreciable)
-    return unless depreciable.flagged?
+    return unless depreciable.depreciated_or_flagged?
+    if depreciable.depreciated?
+      return icon(
+        'exclamation-triangle',
+        'data-toggle' => 'tooltip',
+        class: 'has-tooltip',
+        title: "Depreciated #{
+          time_ago_in_words(depreciable.install_date + 3.years)} ago. " + depreciable.other_reason
+      )
+    end
     icon(
       'exclamation-circle',
       'data-toggle' => 'tooltip',
       class: 'has-tooltip',
-      title: depreciable.flagged_reason
+      title: depreciable.flagged_reason + depreciable.other_reason
     )
   end
 

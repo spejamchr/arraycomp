@@ -5,12 +5,13 @@ module Depreciable
   DEPRECIATION_TIME = 36 # In months
   DEFAULT_FLAG_AT_MONTHS = 3 # Flag when depreciating in 3 months
 
-  def flagged_ratio
-    _options_from_user.flag_at_months / DEPRECIATION_TIME.to_f
+  def flag_at_months
+    _options_from_user.flag_at_months
   end
 
   def near_depreciation
-    current_value / initial_value.to_f < flagged_ratio
+    Date.today > install_date + (DEPRECIATION_TIME - flag_at_months).months &&
+      !depreciated?
   end
 
   def value_at_date(date)
@@ -32,6 +33,18 @@ module Depreciable
 
   def flagged_reason
     raise '`flagged_reason` should be re-implemented on the model'
+  end
+
+  def other_reason
+    ''
+  end
+
+  def depreciated?
+    Date.today > install_date + DEPRECIATION_TIME.months
+  end
+
+  def depreciated_or_flagged?
+    depreciated? || flagged?
   end
 
 end

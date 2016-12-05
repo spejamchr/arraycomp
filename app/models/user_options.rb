@@ -16,7 +16,7 @@ class UserOptions
   end
 
   def flag_at_months= n
-    @flag_at_months = n.to_f
+    @flag_at_months = n.to_i
   end
 
   def show_percent_graphs= n

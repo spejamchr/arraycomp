@@ -32,4 +32,16 @@ class Customer < ApplicationRecord
     total_value_at_date(date) / total_initial_value_at_date(date).to_f
   end
 
+  def depreciated_or_flagged?
+    flagged?
+  end
+
+  def depreciated?
+    false
+  end
+
+  def other_reason
+    ''
+  end
+
 end

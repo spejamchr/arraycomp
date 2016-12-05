@@ -31,17 +31,22 @@ class CompArray < ApplicationRecord
   end
 
   def flagged_reason
-    reason = ''
-    if near_depreciation
-      reason += "Completely depreciates in #{
-        time_ago_in_words(start_date + 3.years)}. "
+    return '' unless near_depreciation
+    "Completely depreciates in #{time_ago_in_words(start_date + 3.years)}. "
+  end
+
+  def other_reason
+    return '' unless components.any?(&:depreciated_or_flagged?)
+    r = ''
+    if components.any?(&:depreciated?)
+      r += "#{pluralize(components.select(&:depreciated?).count, 'component')
+        } depreciated. "
     end
     if components.any?(&:flagged?)
-      reason += "#{
-        pluralize(components.select(&:flagged?).count, 'component')
-        } depreciating soon"
+      r += "#{pluralize(components.select(&:flagged?).count, 'component')
+        } depreciating soon."
     end
-    reason
+    r
   end
 
   def total_initial_value_at_date(date)
