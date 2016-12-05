@@ -18,7 +18,7 @@
     = f.number_field :initial_value
   .field
     = f.label :comp_array_id
-    = collection_select(:component, :comp_array_id, CompArray.all, :id, :description)
+    = collection_select(:component, :comp_array_id, @comp_arrays, :id, :description)
   .actions
     = f.submit 'Save', class: 'btn btn-primary'
     = link_to 'Back', components_path, class: 'btn btn-secondary'

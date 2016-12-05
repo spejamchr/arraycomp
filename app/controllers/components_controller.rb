@@ -1,5 +1,6 @@
 class ComponentsController < ApplicationController
   before_action :set_component, only: [:show, :edit, :update, :destroy]
+  before_action :set_comp_arrays, only: [:new, :edit]
 
   # GET /components
   # GET /components.json
@@ -70,5 +71,15 @@ class ComponentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def component_params
       params.fetch(:component, {}).permit(:description, :install_date, :initial_value, :comp_array_id)
+    end
+
+    def set_comp_arrays
+      customer_id = params.fetch(:component, {})[:customer_id]
+      @comp_arrays =
+        if customer_id.present?
+          Customer.find(customer_id).comp_arrays
+        else
+          CompArray.all
+        end
     end
 end
