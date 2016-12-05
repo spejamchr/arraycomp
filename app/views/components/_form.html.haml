@@ -15,7 +15,7 @@
     = f.date_select :install_date
   .field
     = f.label :initial_value
-    = f.number_field :initial_value
+    = f.number_field :initial_value, step: 0.01, in: (0.01..999_999_999.99)
   .field
     = f.label :comp_array_id
     = collection_select(:component, :comp_array_id, @comp_arrays, :id, :description)
