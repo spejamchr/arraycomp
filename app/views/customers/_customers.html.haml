@@ -1,0 +1,31 @@
+%ul.nav.nav-tabs{:role => "tablist"}
+  %li.nav-item
+    %a.nav-link.active{"data-toggle" => "tab", :href => "#components_graphs", :role => "tab"} Graph
+
+  %li.nav-item
+    %a.nav-link{"data-toggle" => "tab", :href => "#components_tables", :role => "tab"} Table
+
+
+.tab-content
+  #components_graphs.tab-pane.active{:role => "tabpanel"}
+    = line_chart_with customers.map(&:graph_info)
+
+  #components_tables.tab-pane{:role => "tabpanel"}
+    %table.table.tablesorter.tablesorter-default
+      %thead
+        %tr
+          %th Name
+          %th Current Value
+          %th Arrays
+          %th Components
+          %th{:colspan => "3", 'data-sorter'=>'false', 'data-filter'=>'false'}
+      %tbody
+        - @customers.each do |customer|
+          %tr
+            %td= customer.name
+            %td= number_to_currency(customer.total_value_at_date(Date.today))
+            %td= customer.comp_arrays.count
+            %td= customer.components.count
+            %td= link_to 'Show', customer
+            %td= link_to 'Edit', edit_customer_path(customer)
+            %td= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' }

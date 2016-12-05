@@ -1,30 +1,43 @@
-%table.table.tablesorter.tablesorter-default
-  %thead
-    %tr
-      %th Serial Number
-      %th Description
-      %th Install date
-      %th Initial value
-      %th Location
-      %th Customer
-      %th Current Value
-      %th Comp. Current Value
-      %th Total Current Value
-      - if options
-        %th{:colspan => "3", 'data-sorter'=>'false', 'data-filter'=>'false'}
-  %tbody
-    - comp_arrays.each do |comp_array|
-      %tr
-        %td= comp_array.serial_number
-        %td= comp_array.description
-        %td= comp_array.install_date
-        %td= number_to_currency(comp_array.initial_value)
-        %td= comp_array.location
-        %td= link_to comp_array.customer.name, comp_array.customer
-        %td= number_to_currency(comp_array.current_value.round(2))
-        %td= number_to_currency(comp_array.current_value_of_components.round(2))
-        %td= number_to_currency(comp_array.total_current_value.round(2))
-        - if options
-          %td= link_to 'Show', comp_array
-          %td= link_to 'Edit', edit_comp_array_path(comp_array)
-          %td= link_to 'Destroy', comp_array, method: :delete, data: { confirm: 'Are you sure?' }
+%ul.nav.nav-tabs{:role => "tablist"}
+  %li.nav-item
+    %a.nav-link.active{"data-toggle" => "tab", :href => "#comp_arrays_graphs", :role => "tab"} Graph
+
+  %li.nav-item
+    %a.nav-link{"data-toggle" => "tab", :href => "#comp_arrays_tables", :role => "tab"} Table
+
+
+.tab-content
+  #comp_arrays_graphs.tab-pane.active{:role => "tabpanel"}
+    = line_chart_with comp_arrays.map(&:graph_info)
+
+  #comp_arrays_tables.tab-pane{:role => "tabpanel"}
+    %table.table.tablesorter.tablesorter-default
+      %thead
+        %tr
+          %th Serial Number
+          %th Description
+          %th Location
+          %th Customer
+          %th Install date
+          %th Initial value
+          %th Current Value
+          %th Comp. Current Value
+          %th Total Current Value
+          - if options
+            %th{:colspan => "3", 'data-sorter'=>'false', 'data-filter'=>'false'}
+      %tbody
+        - comp_arrays.each do |comp_array|
+          %tr
+            %td= comp_array.serial_number
+            %td= comp_array.description
+            %td= comp_array.location
+            %td= link_to comp_array.customer.name, comp_array.customer
+            %td= comp_array.install_date
+            %td= number_to_currency(comp_array.initial_value)
+            %td= number_to_currency(comp_array.current_value.round(2))
+            %td= number_to_currency(comp_array.current_value_of_components.round(2))
+            %td= number_to_currency(comp_array.total_current_value.round(2))
+            - if options
+              %td= link_to 'Show', comp_array
+              %td= link_to 'Edit', edit_comp_array_path(comp_array)
+              %td= link_to 'Destroy', comp_array, method: :delete, data: { confirm: 'Are you sure?' }

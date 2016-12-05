@@ -1,9 +1,12 @@
 class CompArray < ApplicationRecord
+
   include Depreciable
+  include Graphable
+
   has_many :components
   belongs_to :customer
 
-  DEFAULT_PERIOD = { months: 1 }.freeze
+  alias_attribute :start_date, :install_date
 
   def value_of_components_at_date(date)
     components.inject(0) { |a, e| a + e.value_at_date(date) }
@@ -21,15 +24,4 @@ class CompArray < ApplicationRecord
     total_value_at_date(Date.today)
   end
 
-  def dates(period = DEFAULT_PERIOD.dup)
-    DateRange.at(install_date..Date.today).every(period)
-  end
-
-  def data(period = DEFAULT_PERIOD.dup)
-    dates(period).each_with_object({}) { |d, h| h[d] = total_value_at_date(d) }
-  end
-
-  def graph_info(period = DEFAULT_PERIOD.dup)
-    { name: description, data: data(period) }
-  end
 end
