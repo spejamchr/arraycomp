@@ -10,7 +10,7 @@ class Component < ApplicationRecord
   alias_attribute :start_date, :install_date
 
   def flagged?
-    current_value / initial_value.to_f < FLAGGED_RATIO
+    near_depreciation
   end
 
   def flagged_reason

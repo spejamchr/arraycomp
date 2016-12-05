@@ -3,8 +3,15 @@
 #
 module Depreciable
   DEPRECIATION_TIME = 36 # In months
-  FLAG_AT_MONTHS = 3 # Flag when depreciating in 3 months
-  FLAGGED_RATIO = FLAG_AT_MONTHS / DEPRECIATION_TIME.to_f
+  DEFAULT_FLAG_AT_MONTHS = 3 # Flag when depreciating in 3 months
+
+  def flagged_ratio
+    _options_from_user.flag_at_months / DEPRECIATION_TIME.to_f
+  end
+
+  def near_depreciation
+    current_value / initial_value.to_f < flagged_ratio
+  end
 
   def value_at_date(date)
     age_in_months = (date - install_date).to_f / 30

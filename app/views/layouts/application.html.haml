@@ -29,5 +29,24 @@
             = link_to 'Components', components_path, class: 'nav-link'
           %li.nav-item{class: controller_name == 'customers' ? 'active' : ''}
             = link_to 'Customers', customers_path, class: 'nav-link'
+          %li.nav-item
+            %a.nav-link{"data-target" => "#myModal", "data-toggle" => 'modal', :href => "#"} Options
 
     .body_center= yield
+
+
+    #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog{:role => "document"}
+        .modal-content
+          .modal-header
+            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+            %h4#myModalLabel.modal-title Modal title
+          = form_for(user_options, url: user_options_path) do |f|
+            .modal-body
+              .field
+                = f.label :flag_at_months
+                = f.text_field :flag_at_months
+            .modal-footer
+              %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+              = f.submit('Save changes', class: 'btn btn-primary')

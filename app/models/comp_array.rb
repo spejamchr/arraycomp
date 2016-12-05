@@ -27,13 +27,12 @@ class CompArray < ApplicationRecord
   end
 
   def flagged?
-    current_value / initial_value.to_f < FLAGGED_RATIO ||
-    components.any?(&:flagged?)
+    near_depreciation || components.any?(&:flagged?)
   end
 
   def flagged_reason
     reason = ''
-    if current_value / initial_value.to_f < FLAGGED_RATIO
+    if near_depreciation
       reason += "Completely depreciates in #{
         time_ago_in_words(start_date + 3.years)}. "
     end

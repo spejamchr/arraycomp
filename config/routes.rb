@@ -11,4 +11,7 @@ Rails.application.routes.draw do
       get 'all_comp_arrays'
     end
   end
+
+  resources :user_options, only: [:create]
+
 end
