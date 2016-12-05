@@ -24,4 +24,9 @@ class CompArray < ApplicationRecord
     total_value_at_date(Date.today)
   end
 
+  def flagged?
+    current_value / initial_value.to_f < FLAGGED_RATIO ||
+    components.any?(&:flagged?)
+  end
+
 end

@@ -13,4 +13,10 @@ module ApplicationHelper
         }
       }
   end
+
+  def renewal_flag(depreciable)
+    if depreciable.flagged?
+      icon('exclamation-circle')
+    end
+  end
 end

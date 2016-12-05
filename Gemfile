@@ -56,3 +56,4 @@ gem 'chartkick'
 gem 'jquery-tablesorter'
 # Avoid issues with turbolinks and jquery
 # gem 'jquery-turbolinks'
+gem 'font-awesome-sass'

@@ -15,4 +15,8 @@ class Customer < ApplicationRecord
     comp_arrays.inject(0) { |n, ca| n + ca.total_value_at_date(date) }
   end
 
+  def flagged?
+    comp_arrays.any?(&:flagged?)
+  end
+
 end

@@ -1,7 +1,8 @@
-# Class must define `install_date` and `initial_value`
+# Class must define `install_date`, `initial_value`
 #
 module Depreciable
   DEPRECIATION_TIME = 36 # In months
+  FLAGGED_RATIO = 0.1
 
   def value_at_date(date)
     age_in_months = (date - install_date).to_f / 30
