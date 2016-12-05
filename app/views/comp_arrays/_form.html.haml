@@ -26,4 +26,5 @@
     = f.label :customer_id
     = collection_select(:comp_array, :customer_id, Customer.all, :id, :name)
   .actions
-    = f.submit 'Submit Array'
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to 'Back', comp_arrays_path, class: 'btn btn-secondary'

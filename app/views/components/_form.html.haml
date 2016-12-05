@@ -20,4 +20,5 @@
     = f.label :comp_array_id
     = collection_select(:component, :comp_array_id, CompArray.all, :id, :description)
   .actions
-    = f.submit
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to 'Back', components_path, class: 'btn btn-secondary'

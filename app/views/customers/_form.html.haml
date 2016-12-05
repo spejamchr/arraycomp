@@ -11,4 +11,5 @@
     = f.label :name
     = f.text_field :name
   .actions
-    = f.submit
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to 'Back', customers_path, class: 'btn btn-secondary'
