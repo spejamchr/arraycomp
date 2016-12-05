@@ -24,4 +24,12 @@ class Customer < ApplicationRecord
       comp_arrays.select(&:flagged?).map(&:serial_number).to_sentence}"
   end
 
+  def total_initial_value_at_date(date)
+    comp_arrays.map { |ca| ca.total_initial_value_at_date(date) }.sum
+  end
+
+  def percent_at_date(date)
+    total_value_at_date(date) / total_initial_value_at_date(date).to_f
+  end
+
 end

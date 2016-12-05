@@ -44,6 +44,9 @@
               .field
                 = f.label :flag_at_months
                 = f.text_field :flag_at_months
+              .field
+                = f.label :show_percent_graphs
+                = f.check_box :show_percent_graphs
             .modal-footer
               %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
               = f.submit('Save changes', class: 'btn btn-primary')

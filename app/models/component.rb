@@ -18,4 +18,8 @@ class Component < ApplicationRecord
     "Completely depreciates in #{time_ago_in_words(start_date + 3.years)}."
   end
 
+  def percent_at_date(date)
+    value_at_date(date) / initial_value.to_f
+  end
+
 end

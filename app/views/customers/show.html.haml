@@ -12,3 +12,13 @@ show: true
 = link_to 'New Array',
 new_comp_array_path(comp_array: { customer_id: @customer }),
 class: 'btn btn-primary'
+
+%h3 Components
+
+= render 'components/components',
+components: @customer.components,
+show: true
+
+= link_to 'New Component',
+new_component_path(component: { customer_id: @customer }),
+class: 'btn btn-primary'

@@ -44,4 +44,14 @@ class CompArray < ApplicationRecord
     reason
   end
 
+  def total_initial_value_at_date(date)
+    return 0 if date < install_date
+    initial_value +
+      components.where('install_date <= ?', date).pluck(:initial_value).sum
+  end
+
+  def percent_at_date(date)
+    total_value_at_date(date) / total_initial_value_at_date(date).to_f
+  end
+
 end
