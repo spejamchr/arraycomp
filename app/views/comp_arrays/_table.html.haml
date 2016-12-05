@@ -10,11 +10,11 @@
       %th Current Value
       %th Comp. Current Value
       %th Total Current Value
-      %th{:colspan => show ? '4' : '3', 'data-sorter'=>'false', 'data-filter'=>'false'}
+      %th{:colspan => '2', 'data-sorter'=>'false', 'data-filter'=>'false'}
   %tbody
     - comp_arrays.each do |comp_array|
       %tr
-        %td= comp_array.serial_number
+        %td= link_to comp_array.serial_number, comp_array
         %td= comp_array.description
         %td= comp_array.location
         %td= link_to comp_array.customer.name, comp_array.customer
@@ -24,7 +24,12 @@
         %td= number_to_currency(comp_array.current_value_of_components.round(2))
         %td= number_to_currency(comp_array.total_current_value.round(2))
         %td= renewal_flag(comp_array)
-        - if show
-          %td= link_to 'Show', comp_array
-        %td= link_to 'Edit', edit_comp_array_path(comp_array)
-        %td= link_to 'Delete', comp_array, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          .btn-group.btn-group-sm
+            %button.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+              Action
+            .dropdown-menu
+              = link_to 'Show', comp_array, class: 'dropdown-item'
+              = link_to 'Edit', edit_comp_array_path(comp_array), class: 'dropdown-item'
+              .dropdown-divider
+              = link_to 'Delete', comp_array, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'

@@ -6,16 +6,21 @@
       %th Arrays
       %th Components
       %th{'data-sorter'=>'false', 'data-filter'=>'false'}
-      %th{:colspan => show ? '4' : '3', 'data-sorter'=>'false', 'data-filter'=>'false'}
+      %th{:colspan => '2', 'data-sorter'=>'false', 'data-filter'=>'false'}
   %tbody
     - customers.each do |customer|
       %tr
-        %td= customer.name
+        %td= link_to customer.name, customer
         %td= number_to_currency(customer.total_value_at_date(Date.today))
         %td= customer.comp_arrays.count
         %td= customer.components.count
         %td= renewal_flag(customer)
-        - if show
-          %td= link_to 'Show', customer
-        %td= link_to 'Edit', edit_customer_path(customer)
-        %td= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          .btn-group.btn-group-sm
+            %button.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+              Action
+            .dropdown-menu
+              = link_to 'Show', customer, class: 'dropdown-item'
+              = link_to 'Edit', edit_customer_path(customer), class: 'dropdown-item'
+              .dropdown-divider
+              = link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'

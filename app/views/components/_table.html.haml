@@ -7,18 +7,23 @@
       %th Install date
       %th Initial value
       %th Current Value
-      %th{:colspan => show ? '4' : '3', 'data-sorter'=>'false', 'data-filter'=>'false'}
+      %th{:colspan => '2', 'data-sorter'=>'false', 'data-filter'=>'false'}
   %tbody
     - components.each do |component|
       %tr
-        %td= component.description
+        %td= link_to component.description, component
         %td= link_to component.comp_array.serial_number, component.comp_array
         %td= link_to component.customer.name, component.customer
         %td= component.install_date
         %td= number_to_currency(component.initial_value)
         %td= number_to_currency(component.current_value.round(2))
         %td= renewal_flag(component)
-        - if show
-          %td= link_to 'Show', component
-        %td= link_to 'Edit', edit_component_path(component)
-        %td= link_to 'Delete', component, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          .btn-group.btn-group-sm
+            %button.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+              Action
+            .dropdown-menu
+              = link_to 'Show', component, class: 'dropdown-item'
+              = link_to 'Edit', edit_component_path(component), class: 'dropdown-item'
+              .dropdown-divider
+              = link_to 'Delete', component, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
