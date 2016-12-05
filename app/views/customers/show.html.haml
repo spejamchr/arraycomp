@@ -1,13 +1,11 @@
 %p#notice= notice
 %h1 Customer
 
-= render 'customers', customers: [@customer], show: false
+= render 'customers', customers: [@customer]
 
 %h3 Arrays
 
-= render 'comp_arrays/comp_arrays',
-comp_arrays: @customer.comp_arrays,
-show: true
+= render 'comp_arrays/comp_arrays', comp_arrays: @customer.comp_arrays
 
 = link_to 'New Array',
 new_comp_array_path(comp_array: { customer_id: @customer }),
@@ -15,9 +13,7 @@ class: 'btn btn-primary'
 
 %h3 Components
 
-= render 'components/components',
-components: @customer.components,
-show: true
+= render 'components/components', components: @customer.components
 
 = link_to 'New Component',
 new_component_path(component: { customer_id: @customer }),
