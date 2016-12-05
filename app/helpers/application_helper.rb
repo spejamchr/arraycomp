@@ -15,8 +15,13 @@ module ApplicationHelper
   end
 
   def renewal_flag(depreciable)
-    if depreciable.flagged?
-      icon('exclamation-circle')
-    end
+    return unless depreciable.flagged?
+    icon(
+      'exclamation-circle',
+      'data-toggle' => 'tooltip',
+      class: 'has-tooltip',
+      title: depreciable.flagged_reason
+    )
   end
+
 end

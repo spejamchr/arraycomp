@@ -12,7 +12,12 @@
 //
 //= require chartkick
 //= require jquery
+//= require tether
 //= require jquery-tablesorter
 //= require bootstrap
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+  $('.has-tooltip').tooltip();
+});

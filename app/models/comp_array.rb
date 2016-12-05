@@ -2,6 +2,8 @@ class CompArray < ApplicationRecord
 
   include Depreciable
   include Graphable
+  include ActionView::Helpers::DateHelper # Use time_ago_in_words
+  include ActionView::Helpers::TextHelper # Use pluralize
 
   has_many :components
   belongs_to :customer
@@ -27,6 +29,20 @@ class CompArray < ApplicationRecord
   def flagged?
     current_value / initial_value.to_f < FLAGGED_RATIO ||
     components.any?(&:flagged?)
+  end
+
+  def flagged_reason
+    reason = ''
+    if current_value / initial_value.to_f < FLAGGED_RATIO
+      reason += "Completely depreciates in #{
+        time_ago_in_words(start_date + 3.years)}. "
+    end
+    if components.any?(&:flagged?)
+      reason += "#{
+        pluralize(components.select(&:flagged?).count, 'component')
+        } depreciating soon"
+    end
+    reason
   end
 
 end

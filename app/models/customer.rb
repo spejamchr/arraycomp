@@ -19,4 +19,9 @@ class Customer < ApplicationRecord
     comp_arrays.any?(&:flagged?)
   end
 
+  def flagged_reason
+    "Depreciating soon: #{
+      comp_arrays.select(&:flagged?).map(&:serial_number).to_sentence}"
+  end
+
 end
