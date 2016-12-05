@@ -8,14 +8,12 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
 
     %title Arraycomp
+    / Bootstrap CSS
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css", :integrity => "2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj", :rel => "stylesheet"}/
     = csrf_meta_tags
     = javascript_include_tag '//www.google.com/jsapi'
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
-
-
-    / Bootstrap CSS
-    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css", :integrity => "2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj", :rel => "stylesheet"}/
   %body
     %nav.navbar.navbar-light.bg-faded
       %button.navbar-toggler.hidden-sm-up{"aria-controls" => "array_comp_navbar", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#array_comp_navbar", "data-toggle" => "collapse", :type => "button"}
