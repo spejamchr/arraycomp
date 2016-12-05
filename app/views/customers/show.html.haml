@@ -5,7 +5,10 @@
 
 %h3 Arrays
 
-= render 'comp_arrays/comp_arrays', comp_arrays: @customer.comp_arrays, show: true
+= render 'comp_arrays/comp_arrays',
+comp_arrays: @customer.comp_arrays,
+show: true
 
-%br/
-= link_to 'New Array', new_comp_array_path(comp_array: { customer_id: @customer })
+= link_to 'New Array',
+new_comp_array_path(comp_array: { customer_id: @customer }),
+class: 'btn btn-primary'

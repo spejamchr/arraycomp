@@ -6,7 +6,10 @@
 
 %h3 Components
 
-= render '/components/components', components: @comp_array.components, show: true
+= render '/components/components',
+components: @comp_array.components,
+show: true
 
-%br/
-= link_to 'New Component', new_component_path(component: { comp_array_id: @comp_array })
+= link_to 'New Component',
+new_component_path(component: { comp_array_id: @comp_array }),
+class: 'btn btn-primary'

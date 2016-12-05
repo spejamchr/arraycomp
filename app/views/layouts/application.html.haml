@@ -32,9 +32,6 @@
           %li.nav-item
             %a.nav-link{"data-target" => "#myModal", "data-toggle" => 'modal', :href => "#"} Options
 
-    .body_center= yield
-
-
     #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
       .modal-dialog{:role => "document"}
         .modal-content
@@ -50,3 +47,7 @@
             .modal-footer
               %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
               = f.submit('Save changes', class: 'btn btn-primary')
+
+    .body_center= yield
+
+    %br
