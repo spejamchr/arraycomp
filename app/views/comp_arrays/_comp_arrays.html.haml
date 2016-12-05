@@ -1,14 +1,2 @@
-%ul.nav.nav-tabs{:role => "tablist"}
-  %li.nav-item
-    %a.nav-link.active{"data-toggle" => "tab", :href => "#comp_arrays_graphs", :role => "tab"} Graph
-
-  %li.nav-item
-    %a.nav-link{"data-toggle" => "tab", :href => "#comp_arrays_tables", :role => "tab"} Table
-
-
-.tab-content
-  #comp_arrays_graphs.tab-pane.active{:role => "tabpanel"}
-    = line_chart_with comp_arrays.map(&:graph_info)
-
-  #comp_arrays_tables.tab-pane{:role => "tabpanel"}
-    = render "comp_arrays/table", comp_arrays: comp_arrays, options: options
+= line_chart_with comp_arrays.map(&:graph_info)
+= render "comp_arrays/table", comp_arrays: comp_arrays, show: show

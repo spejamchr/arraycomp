@@ -2,11 +2,11 @@
 
 %h1 Array #{@comp_array.serial_number}
 
-= render 'comp_arrays', comp_arrays: [@comp_array], options: false
+= render 'comp_arrays', comp_arrays: [@comp_array], show: false
 
 %h3 Components
 
-= render '/components/components', components: @comp_array.components
+= render '/components/components', components: @comp_array.components, show: true
 
 %br/
 = link_to 'New Component', new_component_path(component: { comp_array_id: @comp_array })

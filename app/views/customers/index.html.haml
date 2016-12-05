@@ -1,7 +1,7 @@
 %p#notice= notice
 %h1 Customers
 
-= render 'customers', customers: @customers
+= render 'customers', customers: @customers, show: true
 
 %br/
 = link_to 'New Customer', new_customer_path

@@ -2,18 +2,4 @@
 
 %h1 Component
 
-%p
-  %strong Description:
-  = @component.description
-%p
-  %strong Install date:
-  = @component.install_date
-%p
-  %strong Initial value:
-  = @component.initial_value
-%p
-  %strong Array:
-  = @component.comp_array.description
-= link_to 'Edit', edit_component_path(@component)
-|
-= link_to 'Back', components_path
+= render 'components', components: [@component], show: false

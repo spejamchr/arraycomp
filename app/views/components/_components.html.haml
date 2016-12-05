@@ -1,14 +1,2 @@
-%ul.nav.nav-tabs{:role => "tablist"}
-  %li.nav-item
-    %a.nav-link.active{"data-toggle" => "tab", :href => "#components_graphs", :role => "tab"} Graph
-
-  %li.nav-item
-    %a.nav-link{"data-toggle" => "tab", :href => "#components_tables", :role => "tab"} Table
-
-
-.tab-content
-  #components_graphs.tab-pane.active{:role => "tabpanel"}
-    = line_chart_with components.map(&:graph_info)
-
-  #components_tables.tab-pane{:role => "tabpanel"}
-    = render "components/table", components: components
+= line_chart_with components.map(&:graph_info)
+= render "components/table", components: components, show: show

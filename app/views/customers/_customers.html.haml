@@ -1,14 +1,2 @@
-%ul.nav.nav-tabs{:role => "tablist"}
-  %li.nav-item
-    %a.nav-link.active{"data-toggle" => "tab", :href => "#customers_graphs", :role => "tab"} Graph
-
-  %li.nav-item
-    %a.nav-link{"data-toggle" => "tab", :href => "#customers_tables", :role => "tab"} Table
-
-
-.tab-content
-  #customers_graphs.tab-pane.active{:role => "tabpanel"}
-    = line_chart_with customers.map(&:graph_info)
-
-  #customers_tables.tab-pane{:role => "tabpanel"}
-    = render "customers/table", customers: customers
+= line_chart_with customers.map(&:graph_info)
+= render "customers/table", customers: customers, show: show
